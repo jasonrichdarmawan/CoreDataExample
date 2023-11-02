@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddBookmarkItem {
-    func call() -> Bool
+    func call(type: String, data: [String: Any]) -> Bool
 }
 
 final class AddBookmarkItemImpl: AddBookmarkItem {
@@ -18,8 +18,8 @@ final class AddBookmarkItemImpl: AddBookmarkItem {
         self.repository = repository
     }
     
-    func call() -> Bool {
-        return repository.add()
+    func call(type: String, data: [String: Any]) -> Bool {
+        return repository.add(type: type, data: data)
     }
 }
 

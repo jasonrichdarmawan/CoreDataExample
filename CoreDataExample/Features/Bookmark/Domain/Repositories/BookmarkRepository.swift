@@ -9,6 +9,6 @@ import Foundation
 
 protocol BookmarkRepository {
     func get() -> [BookmarkItem]
-    func add() -> Bool
+    func add(type: String, data: [String: Any]) -> Bool
     func delete(offsets: IndexSet) -> Bool
 }

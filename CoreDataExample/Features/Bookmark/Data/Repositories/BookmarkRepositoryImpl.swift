@@ -24,8 +24,8 @@ final class BookmarkRepositoryImpl: BookmarkRepository {
         return dataSource.get()?.map { $0.toDomain() } ?? []
     }
     
-    func add() -> Bool {
-        return dataSource.add()
+    func add(type: String, data: [String: Any]) -> Bool {
+        return dataSource.add(type: type, data: data)
     }
     
     func delete(offsets: IndexSet) -> Bool {

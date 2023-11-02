@@ -36,8 +36,8 @@ final class BookmarkViewModel: ObservableObject {
     }
     
     // TECHDEBT: call initState everytime the datasource updates.
-    func addItem() {
-        _ = addBookmarkItem.call()
+    func addItem(type: String, data: [String: Any]) {
+        _ = addBookmarkItem.call(type: type, data: data)
         bookmarkList = getItems()
     }
     
@@ -49,6 +49,8 @@ final class BookmarkViewModel: ObservableObject {
 }
 
 final class BookmarkViewModelManager {
+    private init() {}
+    
     static let shared = BookmarkViewModel(
         getBookmarkList: GetBookmarkListManager.shared,
         addBookmarkItem: AddBookmarkItemManager.shared,

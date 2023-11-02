@@ -10,7 +10,7 @@ import CoreData
 
 protocol BookmarkDataSource {
     func get() -> [BookmarkItemModel]?
-    func add() -> Bool
+    func add(type: String, data: [String: Any]) -> Bool
     func delete(offsets: IndexSet) -> Bool
 }
 
@@ -35,9 +35,22 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
         return objects
     }
     
-    func add() -> Bool {
+    func add(type: String, data: [String: Any]) -> Bool {
         let newItem = BookmarkItemModel(context: viewContext)
         newItem.timestamp = Date()
+        newItem.type = type
+        
+        switch type {
+        case "regulation":
+            newItem.data = data["url"] as? String
+            break
+        case "definition":
+            newItem.data = data["document_id"] as? String
+            break
+        default:
+            return false
+        }
+        
         do {
             try viewContext.save()
         } catch {

@@ -14,7 +14,11 @@ struct BookmarkPage: View {
         List {
             ForEach(viewModel.bookmarkList) { item in
                 NavigationLink {
-                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                    VStack {
+                        Text("timestamp: \(item.timestamp!, formatter: itemFormatter)")
+                        Text("type: \(item.type ?? "")")
+                        Text("data: \(item.mapDataToString())")
+                    }
                 } label: {
                     Text(item.timestamp!, formatter: itemFormatter)
                 }
@@ -32,10 +36,29 @@ struct BookmarkPage: View {
             ToolbarItem {
                 Button {
                     withAnimation {
-                        viewModel.addItem()
+                        viewModel.addItem(
+                            type: "regulation",
+                            data: [
+                                "url": UUID().uuidString,
+                            ]
+                        )
                     }
                 } label: {
-                    Label("Add Item", systemImage: "plus")
+                    Label("Add Regulation", systemImage: "a.circle")
+                }
+            }
+            ToolbarItem {
+                Button {
+                    withAnimation {
+                        viewModel.addItem(
+                            type: "definition",
+                            data: [
+                                "document_id": UUID().uuidString,
+                            ]
+                        )
+                    }
+                } label: {
+                    Label("Add Definition", systemImage: "b.circle")
                 }
             }
         }
