@@ -23,14 +23,14 @@ final class BookmarkViewModel: ObservableObject {
         self.getBookmarkList = getBookmarkList
         self.addBookmarkItem = addBookmarkItem
         self.deleteBookmarkItems = deleteBookmarkItems
-        self.bookmarkList = getBookmarkList.call()
+        self.bookmarkList = []
     }
     
     deinit {
         print("\(type(of: self)) \(#function)")
     }
     
-    private func initState() -> [BookmarkItem] {
+    func getItems() -> [BookmarkItem] {
         print("\(BookmarkViewModel.self) \(#function)")
         return getBookmarkList.call()
     }
@@ -38,13 +38,13 @@ final class BookmarkViewModel: ObservableObject {
     // TECHDEBT: call initState everytime the datasource updates.
     func addItem() {
         _ = addBookmarkItem.call()
-        bookmarkList = initState()
+        bookmarkList = getItems()
     }
     
     // TECHDEBT: call initState everytime the datasource updates.
     func deleteItems(offsets: IndexSet) {
         _ = deleteBookmarkItems.call(offsets: offsets)
-        bookmarkList = initState()
+        bookmarkList = getItems()
     }
 }
 

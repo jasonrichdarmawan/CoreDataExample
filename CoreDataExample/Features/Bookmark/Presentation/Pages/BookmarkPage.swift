@@ -39,6 +39,9 @@ struct BookmarkPage: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.bookmarkList = viewModel.getItems()
+        }
     }
 }
 
