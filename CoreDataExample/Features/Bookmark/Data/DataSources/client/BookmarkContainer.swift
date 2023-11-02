@@ -7,14 +7,22 @@
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+final class BookmarkContainer {
+    static let shared: BookmarkContainer = {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+            return preview
+        }
+        
+        let result = BookmarkContainer()
+        
+        return result
+    }()
 
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+    private static let preview: BookmarkContainer = {
+        let result = BookmarkContainer(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
+            let newItem = BookmarkItemModel(context: viewContext)
             newItem.timestamp = Date()
         }
         do {
@@ -31,6 +39,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        print("\(type(of: self)) \(#function)")
         container = NSPersistentContainer(name: "CoreDataExample")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
@@ -52,5 +61,9 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+
+    deinit {
+        print("\(type(of: self)) \(#function)")
     }
 }

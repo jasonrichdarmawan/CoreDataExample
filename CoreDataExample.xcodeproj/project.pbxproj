@@ -11,8 +11,18 @@
 		961339992AF3DF1B00ABDB75 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339982AF3DF1B00ABDB75 /* ContentView.swift */; };
 		9613399B2AF3DF1D00ABDB75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9613399A2AF3DF1D00ABDB75 /* Assets.xcassets */; };
 		9613399E2AF3DF1D00ABDB75 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9613399D2AF3DF1D00ABDB75 /* Preview Assets.xcassets */; };
-		961339A02AF3DF1D00ABDB75 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613399F2AF3DF1D00ABDB75 /* Persistence.swift */; };
+		961339A02AF3DF1D00ABDB75 /* BookmarkContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613399F2AF3DF1D00ABDB75 /* BookmarkContainer.swift */; };
 		961339A32AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 961339A12AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld */; };
+		961339AA2AF3E59C00ABDB75 /* BookmarItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339A92AF3E59C00ABDB75 /* BookmarItemModel.swift */; };
+		961339AC2AF3E60500ABDB75 /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339AB2AF3E60500ABDB75 /* BookmarkItem.swift */; };
+		961339B72AF3EB5200ABDB75 /* GetBookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339B62AF3EB5200ABDB75 /* GetBookmarkList.swift */; };
+		961339BA2AF3EBE000ABDB75 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339B92AF3EBE000ABDB75 /* BookmarkRepository.swift */; };
+		961339BC2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339BB2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift */; };
+		961339BF2AF3ED2100ABDB75 /* BookmarkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339BE2AF3ED2100ABDB75 /* BookmarkDataSource.swift */; };
+		961339C52AF3EF5800ABDB75 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339C42AF3EF5800ABDB75 /* BookmarkViewModel.swift */; };
+		961339C82AF3EFAA00ABDB75 /* BookmarkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339C72AF3EFAA00ABDB75 /* BookmarkPage.swift */; };
+		961339CA2AF3FA5700ABDB75 /* AddBookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339C92AF3FA5700ABDB75 /* AddBookmarkItem.swift */; };
+		961339CC2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339CB2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +31,18 @@
 		961339982AF3DF1B00ABDB75 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9613399A2AF3DF1D00ABDB75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9613399D2AF3DF1D00ABDB75 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9613399F2AF3DF1D00ABDB75 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		9613399F2AF3DF1D00ABDB75 /* BookmarkContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkContainer.swift; sourceTree = "<group>"; };
 		961339A22AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataExample.xcdatamodel; sourceTree = "<group>"; };
+		961339A92AF3E59C00ABDB75 /* BookmarItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarItemModel.swift; sourceTree = "<group>"; };
+		961339AB2AF3E60500ABDB75 /* BookmarkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkItem.swift; sourceTree = "<group>"; };
+		961339B62AF3EB5200ABDB75 /* GetBookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookmarkList.swift; sourceTree = "<group>"; };
+		961339B92AF3EBE000ABDB75 /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
+		961339BB2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepositoryImpl.swift; sourceTree = "<group>"; };
+		961339BE2AF3ED2100ABDB75 /* BookmarkDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDataSource.swift; sourceTree = "<group>"; };
+		961339C42AF3EF5800ABDB75 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		961339C72AF3EFAA00ABDB75 /* BookmarkPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPage.swift; sourceTree = "<group>"; };
+		961339C92AF3FA5700ABDB75 /* AddBookmarkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkItem.swift; sourceTree = "<group>"; };
+		961339CB2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +75,10 @@
 		961339952AF3DF1B00ABDB75 /* CoreDataExample */ = {
 			isa = PBXGroup;
 			children = (
+				961339B02AF3E9B300ABDB75 /* Features */,
 				961339962AF3DF1B00ABDB75 /* CoreDataExampleApp.swift */,
 				961339982AF3DF1B00ABDB75 /* ContentView.swift */,
 				9613399A2AF3DF1D00ABDB75 /* Assets.xcassets */,
-				9613399F2AF3DF1D00ABDB75 /* Persistence.swift */,
-				961339A12AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld */,
 				9613399C2AF3DF1D00ABDB75 /* Preview Content */,
 			);
 			path = CoreDataExample;
@@ -71,6 +90,129 @@
 				9613399D2AF3DF1D00ABDB75 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		961339AD2AF3E9A400ABDB75 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				961339B12AF3E9D500ABDB75 /* Models */,
+				961339B22AF3EA0700ABDB75 /* DataSources */,
+				961339B32AF3EA7600ABDB75 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		961339AE2AF3E9A800ABDB75 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				961339B52AF3EA9300ABDB75 /* Entities */,
+				961339B82AF3EBD400ABDB75 /* Repositories */,
+				961339B42AF3EA8C00ABDB75 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		961339AF2AF3E9AC00ABDB75 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				961339AD2AF3E9A400ABDB75 /* Data */,
+				961339AE2AF3E9A800ABDB75 /* Domain */,
+				961339C22AF3EF3800ABDB75 /* Presentation */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		961339B02AF3E9B300ABDB75 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				961339AF2AF3E9AC00ABDB75 /* Bookmark */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		961339B12AF3E9D500ABDB75 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				961339A92AF3E59C00ABDB75 /* BookmarItemModel.swift */,
+				961339A12AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		961339B22AF3EA0700ABDB75 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				961339BD2AF3ED0300ABDB75 /* client */,
+				961339BE2AF3ED2100ABDB75 /* BookmarkDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		961339B32AF3EA7600ABDB75 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				961339BB2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		961339B42AF3EA8C00ABDB75 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				961339B62AF3EB5200ABDB75 /* GetBookmarkList.swift */,
+				961339C92AF3FA5700ABDB75 /* AddBookmarkItem.swift */,
+				961339CB2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		961339B52AF3EA9300ABDB75 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				961339AB2AF3E60500ABDB75 /* BookmarkItem.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		961339B82AF3EBD400ABDB75 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				961339B92AF3EBE000ABDB75 /* BookmarkRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		961339BD2AF3ED0300ABDB75 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				9613399F2AF3DF1D00ABDB75 /* BookmarkContainer.swift */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		961339C22AF3EF3800ABDB75 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				961339C32AF3EF4200ABDB75 /* ViewModels */,
+				961339C62AF3EF9900ABDB75 /* Pages */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		961339C32AF3EF4200ABDB75 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				961339C42AF3EF5800ABDB75 /* BookmarkViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		961339C62AF3EF9900ABDB75 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				961339C72AF3EFAA00ABDB75 /* BookmarkPage.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +285,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				961339A02AF3DF1D00ABDB75 /* Persistence.swift in Sources */,
+				961339C52AF3EF5800ABDB75 /* BookmarkViewModel.swift in Sources */,
+				961339A02AF3DF1D00ABDB75 /* BookmarkContainer.swift in Sources */,
+				961339BC2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift in Sources */,
+				961339BA2AF3EBE000ABDB75 /* BookmarkRepository.swift in Sources */,
+				961339CA2AF3FA5700ABDB75 /* AddBookmarkItem.swift in Sources */,
 				961339992AF3DF1B00ABDB75 /* ContentView.swift in Sources */,
+				961339C82AF3EFAA00ABDB75 /* BookmarkPage.swift in Sources */,
+				961339CC2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift in Sources */,
+				961339AC2AF3E60500ABDB75 /* BookmarkItem.swift in Sources */,
 				961339972AF3DF1B00ABDB75 /* CoreDataExampleApp.swift in Sources */,
+				961339B72AF3EB5200ABDB75 /* GetBookmarkList.swift in Sources */,
+				961339AA2AF3E59C00ABDB75 /* BookmarItemModel.swift in Sources */,
+				961339BF2AF3ED2100ABDB75 /* BookmarkDataSource.swift in Sources */,
 				961339A32AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
