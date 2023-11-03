@@ -10,7 +10,7 @@ import CoreData
 
 protocol BookmarkDataSource {
     func get() -> [BookmarkItemModel]?
-    func add(type: String, data: [String: Any]) -> Bool
+    func add(type: String, data: [String: Any]) -> BookmarkItemModel?
     func delete(offsets: IndexSet) -> Bool
 }
 
@@ -35,7 +35,7 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
         return objects
     }
     
-    func add(type: String, data: [String: Any]) -> Bool {
+    func add(type: String, data: [String: Any]) -> BookmarkItemModel? {
         let newItem = BookmarkItemModel(context: viewContext)
         newItem.timestamp = Date()
         newItem.type = type
@@ -48,7 +48,7 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
             newItem.data = data["document_id"] as? String
             break
         default:
-            return false
+            return nil
         }
         
         do {
@@ -56,9 +56,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
         } catch {
             let nsError = error as NSError
             print("Unresolved error \(nsError), \(nsError.userInfo)")
-            return false
+            return nil
         }
-        return true
+        return newItem
     }
     
     func delete(offsets: IndexSet) -> Bool {
