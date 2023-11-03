@@ -15,12 +15,16 @@ final class GetBookmarkListsImpl: GetBookmarkLists {
     private let repository: BookmarkRepository
     
     init(repository: BookmarkRepository) {
-        self.repository = repository
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
+        self.repository = repository
     }
     
     deinit {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     func call(ascending: Bool) -> [BookmarkList] {

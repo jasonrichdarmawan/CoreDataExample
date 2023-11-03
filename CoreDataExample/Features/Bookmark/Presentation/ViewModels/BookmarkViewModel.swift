@@ -19,7 +19,9 @@ final class BookmarkViewModel: ObservableObject {
         addBookmarkList: AddBookmarkList,
         deleteBookmarkLists: DeleteBookmarkListsByIDs
     ) {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
         self.bookmarkLists = []
         
         self.getBookmarkList = getBookmarkList
@@ -28,22 +30,32 @@ final class BookmarkViewModel: ObservableObject {
     }
     
     deinit {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     func getList(ascending: Bool = false) -> [BookmarkList] {
-        print("\(BookmarkViewModel.self) \(#function)")
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         return getBookmarkList.call(ascending: ascending)
     }
     
     // TECHDEBT: update bookmarkList manually
     func addList(title: String) {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         guard let newList = addBookmarkList.call(title: title) else { return }
         bookmarkLists.append(newList)
         bookmarkLists.sort { $0.timestamp ?? Date() > $1.timestamp ?? Date() }
     }
     
     func deleteLists(ids: [String]) {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         _ = deleteBookmarkLists.call(ids: ids)
         bookmarkLists = bookmarkLists.filter { item in
             guard let id = item.id else { return true }

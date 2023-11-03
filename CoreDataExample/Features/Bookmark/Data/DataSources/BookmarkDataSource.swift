@@ -22,17 +22,22 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     private var viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext) {
-        self.viewContext = viewContext
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
+        self.viewContext = viewContext
     }
     
     deinit {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     func getLists(ascending: Bool = false) -> [BookmarkListModel]? {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
-        
+        #endif
         let fetchRequest = BookmarkListModel.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \BookmarkListModel.timestamp, ascending: ascending)
@@ -43,6 +48,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     }
     
     func getList(listID: String) -> BookmarkListModel? {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         let fetchRequest = BookmarkListModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id = %@", listID)
         
@@ -52,6 +60,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     }
     
     func addList(title: String) -> BookmarkListModel? {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         let newList = BookmarkListModel(context: viewContext)
         newList.id = UUID().uuidString
         newList.timestamp = Date()
@@ -68,6 +79,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     }
     
     func deleteLists(ids: [String]) -> Bool {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         guard let items = getLists()
         else { return false }
         
@@ -88,6 +102,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     }
     
     func getItems(listID: String, ascending: Bool = false) -> [BookmarkItemModel]? {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         let fetchRequest = BookmarkItemModel.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \BookmarkItemModel.timestamp, ascending: ascending)
@@ -99,6 +116,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     }
     
     func addItem(listID: String, type: String, data: [String: Any]) -> BookmarkItemModel? {
+        #if DEBUG
+        print("\(String(describing: self)) \(#function)")
+        #endif
         let newItem = BookmarkItemModel(context: viewContext)
         newItem.timestamp = Date()
         newItem.id = UUID().uuidString
@@ -130,6 +150,9 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
     }
     
     func deleteItems(listID: String, ids: [String]) -> Bool {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         guard let items = getItems(listID: listID)
         else { return false }
         

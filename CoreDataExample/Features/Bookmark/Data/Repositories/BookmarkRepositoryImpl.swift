@@ -11,12 +11,16 @@ final class BookmarkRepositoryImpl: BookmarkRepository {
     private let dataSource: BookmarkDataSource
     
     init(dataSource: BookmarkDataSource) {
-        self.dataSource = dataSource
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
+        self.dataSource = dataSource
     }
     
     deinit {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     func getLists(ascending: Bool) -> [BookmarkList] {

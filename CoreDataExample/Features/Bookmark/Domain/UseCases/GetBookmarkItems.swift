@@ -15,7 +15,16 @@ final class GetBookmarkItemsImpl: GetBookmarkItems {
     private let repository: BookmarkRepository
     
     init(repository: BookmarkRepository) {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
         self.repository = repository
+    }
+    
+    deinit {
+        #if DEBUG
+        print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     func call(listID: String, ascending: Bool) -> [BookmarkItem] {

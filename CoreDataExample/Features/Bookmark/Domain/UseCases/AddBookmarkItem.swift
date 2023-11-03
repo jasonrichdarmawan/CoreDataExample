@@ -16,11 +16,15 @@ final class AddBookmarkItemImpl: AddBookmarkItem {
     
     init(repository: BookmarkRepository) {
         self.repository = repository
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     deinit {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
     
     func call(listID: String, type: String, data: [String: Any]) -> BookmarkItem? {

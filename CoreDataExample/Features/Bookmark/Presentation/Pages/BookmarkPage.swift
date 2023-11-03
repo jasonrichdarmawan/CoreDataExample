@@ -53,7 +53,15 @@ struct BookmarkPage: View {
             }
         }
         .onAppear {
+            #if DEBUG
+            print("\(type(of: self)) onAppear")
+            #endif
             viewModel.bookmarkLists = viewModel.getList()
+        }
+        .onDisappear {
+            #if DEBUG
+            print("\(type(of: self)) onDisappear")
+            #endif
         }
     }
 }

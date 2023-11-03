@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "BBF4CE39-954C-48CF-B0FF-C05CB0CF2389"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E4CD4B2-D966-48B9-ACAD-A5AD465C1741"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CoreDataExample/Features/Bookmark/Presentation/ViewModels/BookmarkViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "deleteLists(ids:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2E4CD4B2-D966-48B9-ACAD-A5AD465C1741 - de44098844222933"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoreDataExample.BookmarkViewModel.deleteLists(ids: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "CoreDataExample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jason/Learn/Apple/CoreDataExample/CoreDataExample/Features/Bookmark/Presentation/ViewModels/BookmarkViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "2E4CD4B2-D966-48B9-ACAD-A5AD465C1741 - de44098844222910"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoreDataExample.BookmarkViewModel.deleteLists(ids: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "CoreDataExample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jason/Learn/Apple/CoreDataExample/CoreDataExample/Features/Bookmark/Presentation/ViewModels/BookmarkViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

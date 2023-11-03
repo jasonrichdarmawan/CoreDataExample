@@ -64,7 +64,9 @@ final class BookmarkContainer {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
         container = NSPersistentContainer(name: "CoreDataExample")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
@@ -89,6 +91,8 @@ final class BookmarkContainer {
     }
 
     deinit {
+        #if DEBUG
         print("\(type(of: self)) \(#function)")
+        #endif
     }
 }
