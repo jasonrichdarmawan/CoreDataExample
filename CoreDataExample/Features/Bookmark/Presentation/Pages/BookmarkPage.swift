@@ -12,20 +12,27 @@ struct BookmarkPage: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.bookmarkList) { item in
+            ForEach(viewModel.bookmarkLists) { list in
                 NavigationLink {
-                    VStack {
-                        Text("timestamp: \(item.timestamp!, formatter: itemFormatter)")
-                        Text("type: \(item.type ?? "")")
-                        Text("data: \(item.mapDataToString())")
-                    }
+                    BookmarkListPage(
+                        viewModel: BookmarkListViewModelManager.shared,
+                        listID: list.id ?? ""
+                    )
                 } label: {
-                    Text(item.timestamp!, formatter: itemFormatter)
+                    VStack(alignment: .leading) {
+                        Text("timestamp: \(list.timestamp ?? Date(), formatter: itemFormatter)")
+                        HStack(alignment: .top) {
+                            Text("title:")
+                            Text("\(list.mapTitleToString())")
+                                .lineLimit(1)
+                        }
+                    }
                 }
             }
             .onDelete { offsets in
                 withAnimation {
-                    viewModel.deleteItems(offsets: offsets)
+                    let ids = offsets.compactMap { viewModel.bookmarkLists[$0].id }
+                    viewModel.deleteLists(ids: ids)
                 }
             }
         }
@@ -36,34 +43,17 @@ struct BookmarkPage: View {
             ToolbarItem {
                 Button {
                     withAnimation {
-                        viewModel.addItem(
-                            type: "regulation",
-                            data: [
-                                "url": UUID().uuidString,
-                            ]
+                        viewModel.addList(
+                            title: "List \(UUID().uuidString.prefix(3))"
                         )
                     }
                 } label: {
-                    Label("Add Regulation", systemImage: "a.circle")
-                }
-            }
-            ToolbarItem {
-                Button {
-                    withAnimation {
-                        viewModel.addItem(
-                            type: "definition",
-                            data: [
-                                "document_id": UUID().uuidString,
-                            ]
-                        )
-                    }
-                } label: {
-                    Label("Add Definition", systemImage: "b.circle")
+                    Label("Add List", systemImage: "plus")
                 }
             }
         }
         .onAppear {
-            viewModel.bookmarkList = viewModel.getItems()
+            viewModel.bookmarkLists = viewModel.getList()
         }
     }
 }
@@ -74,7 +64,6 @@ private let itemFormatter: DateFormatter = {
     formatter.timeStyle = .medium
     return formatter
 }()
-
 
 #Preview {
     NavigationView {

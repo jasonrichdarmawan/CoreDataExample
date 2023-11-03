@@ -14,12 +14,15 @@ extension BookmarkItemModel {
         switch type {
         case "regulation":
             data = [
-                "url": self.data as Any
+                "title": self.title as Any,
+                "url": self.url as Any,
             ]
             break;
         case "definition":
             data = [
-                "document_id": self.data as Any
+                "title": self.title as Any,
+                "document_id": self.document_id as Any,
+                "definition": self.definition as Any,
             ]
             break;
         default:

@@ -8,43 +8,47 @@
 import Foundation
 
 final class BookmarkViewModel: ObservableObject {
-    @Published var bookmarkList: [BookmarkItem]
+    @Published var bookmarkLists: [BookmarkList]
     
-    private let getBookmarkList: GetBookmarkList
-    private let addBookmarkItem: AddBookmarkItem
-    private let deleteBookmarkItems: DeleteBookmarkItems
+    private let getBookmarkList: GetBookmarkLists
+    private let addBookmarkList: AddBookmarkList
+    private let deleteBookmarkLists: DeleteBookmarkListsByIDs
     
     init(
-        getBookmarkList: GetBookmarkList,
-        addBookmarkItem: AddBookmarkItem,
-        deleteBookmarkItems: DeleteBookmarkItems
+        getBookmarkList: GetBookmarkLists,
+        addBookmarkList: AddBookmarkList,
+        deleteBookmarkLists: DeleteBookmarkListsByIDs
     ) {
         print("\(type(of: self)) \(#function)")
+        self.bookmarkLists = []
+        
         self.getBookmarkList = getBookmarkList
-        self.addBookmarkItem = addBookmarkItem
-        self.deleteBookmarkItems = deleteBookmarkItems
-        self.bookmarkList = []
+        self.addBookmarkList = addBookmarkList
+        self.deleteBookmarkLists = deleteBookmarkLists
     }
     
     deinit {
         print("\(type(of: self)) \(#function)")
     }
     
-    func getItems() -> [BookmarkItem] {
+    func getList(ascending: Bool = false) -> [BookmarkList] {
         print("\(BookmarkViewModel.self) \(#function)")
-        return getBookmarkList.call()
+        return getBookmarkList.call(ascending: ascending)
     }
     
-    // TECHDEBT: call initState everytime the datasource updates.
-    func addItem(type: String, data: [String: Any]) {
-        guard let result = addBookmarkItem.call(type: type, data: data) else { return }
-        bookmarkList.append(result)
+    // TECHDEBT: update bookmarkList manually
+    func addList(title: String) {
+        guard let newList = addBookmarkList.call(title: title) else { return }
+        bookmarkLists.append(newList)
+        bookmarkLists.sort { $0.timestamp ?? Date() > $1.timestamp ?? Date() }
     }
     
-    // TECHDEBT: call initState everytime the datasource updates.
-    func deleteItems(offsets: IndexSet) {
-        _ = deleteBookmarkItems.call(offsets: offsets)
-        bookmarkList = getItems()
+    func deleteLists(ids: [String]) {
+        _ = deleteBookmarkLists.call(ids: ids)
+        bookmarkLists = bookmarkLists.filter { item in
+            guard let id = item.id else { return true }
+            return !ids.contains(id)
+        }
     }
 }
 
@@ -53,7 +57,7 @@ final class BookmarkViewModelManager {
     
     static let shared = BookmarkViewModel(
         getBookmarkList: GetBookmarkListManager.shared,
-        addBookmarkItem: AddBookmarkItemManager.shared,
-        deleteBookmarkItems: DeleteBookmarkItemsManager.shared
+        addBookmarkList: AddBookmarkListManager.shared,
+        deleteBookmarkLists: DeleteBookmarkListsManager.shared
     )
 }

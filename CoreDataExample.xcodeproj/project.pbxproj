@@ -15,14 +15,21 @@
 		961339A32AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 961339A12AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld */; };
 		961339AA2AF3E59C00ABDB75 /* BookmarItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339A92AF3E59C00ABDB75 /* BookmarItemModel.swift */; };
 		961339AC2AF3E60500ABDB75 /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339AB2AF3E60500ABDB75 /* BookmarkItem.swift */; };
-		961339B72AF3EB5200ABDB75 /* GetBookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339B62AF3EB5200ABDB75 /* GetBookmarkList.swift */; };
+		961339B72AF3EB5200ABDB75 /* GetBookmarkLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339B62AF3EB5200ABDB75 /* GetBookmarkLists.swift */; };
 		961339BA2AF3EBE000ABDB75 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339B92AF3EBE000ABDB75 /* BookmarkRepository.swift */; };
 		961339BC2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339BB2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift */; };
 		961339BF2AF3ED2100ABDB75 /* BookmarkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339BE2AF3ED2100ABDB75 /* BookmarkDataSource.swift */; };
 		961339C52AF3EF5800ABDB75 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339C42AF3EF5800ABDB75 /* BookmarkViewModel.swift */; };
 		961339C82AF3EFAA00ABDB75 /* BookmarkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339C72AF3EFAA00ABDB75 /* BookmarkPage.swift */; };
 		961339CA2AF3FA5700ABDB75 /* AddBookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339C92AF3FA5700ABDB75 /* AddBookmarkItem.swift */; };
-		961339CC2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961339CB2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift */; };
+		966033812AF4EFAF00F3AD61 /* BookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966033802AF4EFAF00F3AD61 /* BookmarkList.swift */; };
+		966033832AF4F12500F3AD61 /* BookmarkListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966033822AF4F12500F3AD61 /* BookmarkListModel.swift */; };
+		966033852AF4FA7700F3AD61 /* AddBookmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966033842AF4FA7700F3AD61 /* AddBookmarkList.swift */; };
+		966033872AF5011400F3AD61 /* DeleteBookmarkListsByIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966033862AF5011400F3AD61 /* DeleteBookmarkListsByIDs.swift */; };
+		966033892AF5037400F3AD61 /* BookmarkListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966033882AF5037400F3AD61 /* BookmarkListPage.swift */; };
+		9660338B2AF50C4F00F3AD61 /* BookmarkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660338A2AF50C4F00F3AD61 /* BookmarkListViewModel.swift */; };
+		9660338D2AF533C900F3AD61 /* GetBookmarkItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660338C2AF533C900F3AD61 /* GetBookmarkItems.swift */; };
+		9660338F2AF56E3F00F3AD61 /* DeleteBookmarkItemsByIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660338E2AF56E3F00F3AD61 /* DeleteBookmarkItemsByIDs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,14 +42,21 @@
 		961339A22AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataExample.xcdatamodel; sourceTree = "<group>"; };
 		961339A92AF3E59C00ABDB75 /* BookmarItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarItemModel.swift; sourceTree = "<group>"; };
 		961339AB2AF3E60500ABDB75 /* BookmarkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkItem.swift; sourceTree = "<group>"; };
-		961339B62AF3EB5200ABDB75 /* GetBookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookmarkList.swift; sourceTree = "<group>"; };
+		961339B62AF3EB5200ABDB75 /* GetBookmarkLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookmarkLists.swift; sourceTree = "<group>"; };
 		961339B92AF3EBE000ABDB75 /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
 		961339BB2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepositoryImpl.swift; sourceTree = "<group>"; };
 		961339BE2AF3ED2100ABDB75 /* BookmarkDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDataSource.swift; sourceTree = "<group>"; };
 		961339C42AF3EF5800ABDB75 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		961339C72AF3EFAA00ABDB75 /* BookmarkPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPage.swift; sourceTree = "<group>"; };
 		961339C92AF3FA5700ABDB75 /* AddBookmarkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkItem.swift; sourceTree = "<group>"; };
-		961339CB2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkItems.swift; sourceTree = "<group>"; };
+		966033802AF4EFAF00F3AD61 /* BookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkList.swift; sourceTree = "<group>"; };
+		966033822AF4F12500F3AD61 /* BookmarkListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListModel.swift; sourceTree = "<group>"; };
+		966033842AF4FA7700F3AD61 /* AddBookmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkList.swift; sourceTree = "<group>"; };
+		966033862AF5011400F3AD61 /* DeleteBookmarkListsByIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkListsByIDs.swift; sourceTree = "<group>"; };
+		966033882AF5037400F3AD61 /* BookmarkListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListPage.swift; sourceTree = "<group>"; };
+		9660338A2AF50C4F00F3AD61 /* BookmarkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewModel.swift; sourceTree = "<group>"; };
+		9660338C2AF533C900F3AD61 /* GetBookmarkItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookmarkItems.swift; sourceTree = "<group>"; };
+		9660338E2AF56E3F00F3AD61 /* DeleteBookmarkItemsByIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookmarkItemsByIDs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +147,7 @@
 		961339B12AF3E9D500ABDB75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				966033822AF4F12500F3AD61 /* BookmarkListModel.swift */,
 				961339A92AF3E59C00ABDB75 /* BookmarItemModel.swift */,
 				961339A12AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld */,
 			);
@@ -159,9 +174,12 @@
 		961339B42AF3EA8C00ABDB75 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				961339B62AF3EB5200ABDB75 /* GetBookmarkList.swift */,
+				961339B62AF3EB5200ABDB75 /* GetBookmarkLists.swift */,
+				966033842AF4FA7700F3AD61 /* AddBookmarkList.swift */,
+				966033862AF5011400F3AD61 /* DeleteBookmarkListsByIDs.swift */,
+				9660338C2AF533C900F3AD61 /* GetBookmarkItems.swift */,
 				961339C92AF3FA5700ABDB75 /* AddBookmarkItem.swift */,
-				961339CB2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift */,
+				9660338E2AF56E3F00F3AD61 /* DeleteBookmarkItemsByIDs.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -170,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				961339AB2AF3E60500ABDB75 /* BookmarkItem.swift */,
+				966033802AF4EFAF00F3AD61 /* BookmarkList.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -203,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				961339C42AF3EF5800ABDB75 /* BookmarkViewModel.swift */,
+				9660338A2AF50C4F00F3AD61 /* BookmarkListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -211,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				961339C72AF3EFAA00ABDB75 /* BookmarkPage.swift */,
+				966033882AF5037400F3AD61 /* BookmarkListPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -290,15 +311,22 @@
 				961339BC2AF3EBF800ABDB75 /* BookmarkRepositoryImpl.swift in Sources */,
 				961339BA2AF3EBE000ABDB75 /* BookmarkRepository.swift in Sources */,
 				961339CA2AF3FA5700ABDB75 /* AddBookmarkItem.swift in Sources */,
+				966033832AF4F12500F3AD61 /* BookmarkListModel.swift in Sources */,
 				961339992AF3DF1B00ABDB75 /* ContentView.swift in Sources */,
 				961339C82AF3EFAA00ABDB75 /* BookmarkPage.swift in Sources */,
-				961339CC2AF40A9F00ABDB75 /* DeleteBookmarkItems.swift in Sources */,
 				961339AC2AF3E60500ABDB75 /* BookmarkItem.swift in Sources */,
+				966033812AF4EFAF00F3AD61 /* BookmarkList.swift in Sources */,
 				961339972AF3DF1B00ABDB75 /* CoreDataExampleApp.swift in Sources */,
-				961339B72AF3EB5200ABDB75 /* GetBookmarkList.swift in Sources */,
+				9660338B2AF50C4F00F3AD61 /* BookmarkListViewModel.swift in Sources */,
+				9660338F2AF56E3F00F3AD61 /* DeleteBookmarkItemsByIDs.swift in Sources */,
+				961339B72AF3EB5200ABDB75 /* GetBookmarkLists.swift in Sources */,
 				961339AA2AF3E59C00ABDB75 /* BookmarItemModel.swift in Sources */,
+				966033872AF5011400F3AD61 /* DeleteBookmarkListsByIDs.swift in Sources */,
+				966033892AF5037400F3AD61 /* BookmarkListPage.swift in Sources */,
 				961339BF2AF3ED2100ABDB75 /* BookmarkDataSource.swift in Sources */,
 				961339A32AF3DF1D00ABDB75 /* CoreDataExample.xcdatamodeld in Sources */,
+				9660338D2AF533C900F3AD61 /* GetBookmarkItems.swift in Sources */,
+				966033852AF4FA7700F3AD61 /* AddBookmarkList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

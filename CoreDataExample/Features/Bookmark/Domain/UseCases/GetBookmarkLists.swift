@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-protocol GetBookmarkList {
-    func call() -> [BookmarkItem]
+protocol GetBookmarkLists {
+    func call(ascending: Bool) -> [BookmarkList]
 }
 
-final class GetBookmarkListImpl: GetBookmarkList {
+final class GetBookmarkListsImpl: GetBookmarkLists {
     private let repository: BookmarkRepository
     
     init(repository: BookmarkRepository) {
@@ -23,13 +23,15 @@ final class GetBookmarkListImpl: GetBookmarkList {
         print("\(type(of: self)) \(#function)")
     }
     
-    func call() -> [BookmarkItem] {
-        return repository.get()
+    func call(ascending: Bool) -> [BookmarkList] {
+        return repository.getLists(ascending: ascending)
     }
 }
 
 final class GetBookmarkListManager {
     private init() {}
     
-    static let shared = GetBookmarkListImpl(repository: BookmarkRepositoryManager.shared)
+    static let shared: GetBookmarkLists = GetBookmarkListsImpl(
+        repository: BookmarkRepositoryManager.shared
+    )
 }

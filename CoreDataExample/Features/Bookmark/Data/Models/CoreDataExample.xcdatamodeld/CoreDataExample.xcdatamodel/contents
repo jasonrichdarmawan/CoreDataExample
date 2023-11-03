@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BookmarkItemModel" representedClassName="BookmarkItemModel" syncable="YES" codeGenerationType="class">
-        <attribute name="data" optional="YES" attributeType="String"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="definition" optional="YES" attributeType="String"/>
+        <attribute name="document_id" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookmarkListModel" inverseName="items" inverseEntity="BookmarkListModel"/>
+    </entity>
+    <entity name="BookmarkListModel" representedClassName="BookmarkListModel" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookmarkItemModel" inverseName="list" inverseEntity="BookmarkItemModel"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

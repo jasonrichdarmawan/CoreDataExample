@@ -8,19 +8,29 @@
 import Foundation
 
 struct BookmarkItem: Identifiable {
-    let id: ObjectIdentifier
+    let id: String?
     let timestamp: Date?
     let type: String?
     let data: [String: Any]
 }
 
 extension BookmarkItem {
-    func mapDataToString() -> String {
+    func mapTitleToString() -> String {
+        return data["title"] as? String ?? ""
+    }
+    
+    func mapParamsToString() -> String {
+        let result: String
+        
         switch type {
         case "regulation":
-            return data["url"] as? String ?? ""
+            result = "url: \(data["url"] as? String ?? "")"
+            
+            return result
         case "definition":
-            return data["document_id"] as? String ?? ""
+            result = "document_id: \(data["document_id"] as? String ?? "") definition: \(data["definition"] as? String ?? "")"
+            
+            return result
         default:
             return ""
         }

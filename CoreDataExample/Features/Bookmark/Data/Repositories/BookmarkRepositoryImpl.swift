@@ -19,17 +19,29 @@ final class BookmarkRepositoryImpl: BookmarkRepository {
         print("\(type(of: self)) \(#function)")
     }
     
-    func get() -> [BookmarkItem] {
+    func getLists(ascending: Bool) -> [BookmarkList] {
         print("\(BookmarkRepositoryImpl.self) \(#function)")
-        return dataSource.get()?.map { $0.toDomain() } ?? []
+        return dataSource.getLists(ascending: ascending)?.map { $0.toDomain() } ?? []
     }
     
-    func add(type: String, data: [String: Any]) -> BookmarkItem? {
-        return dataSource.add(type: type, data: data)?.toDomain()
+    func addList(title: String) -> BookmarkList? {
+        return dataSource.addList(title: title)?.toDomain()
     }
     
-    func delete(offsets: IndexSet) -> Bool {
-        return dataSource.delete(offsets: offsets)
+    func deleteLists(ids: [String]) -> Bool {
+        return dataSource.deleteLists(ids: ids)
+    }
+    
+    func getItems(listID: String, ascending: Bool) -> [BookmarkItem] {
+        return dataSource.getItems(listID: listID, ascending: ascending)?.map { $0.toDomain() } ?? []
+    }
+    
+    func addItem(listID: String, type: String, data: [String: Any]) -> BookmarkItem? {
+        return dataSource.addItem(listID: listID, type: type, data: data)?.toDomain()
+    }
+    
+    func deleteItems(listID: String, ids: [String]) -> Bool {
+        return dataSource.deleteItems(listID: listID, ids: ids)
     }
 }
 

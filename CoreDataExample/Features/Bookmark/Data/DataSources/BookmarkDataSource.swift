@@ -9,9 +9,13 @@ import Foundation
 import CoreData
 
 protocol BookmarkDataSource {
-    func get() -> [BookmarkItemModel]?
-    func add(type: String, data: [String: Any]) -> BookmarkItemModel?
-    func delete(offsets: IndexSet) -> Bool
+    func getLists(ascending: Bool) -> [BookmarkListModel]?
+    func addList(title: String) -> BookmarkListModel?
+    func deleteLists(ids: [String]) -> Bool
+ 
+    func getItems(listID: String, ascending: Bool) -> [BookmarkItemModel]?
+    func addItem(listID: String, type: String, data: [String: Any]) -> BookmarkItemModel?
+    func deleteItems(listID: String, ids: [String]) -> Bool
 }
 
 final class BookmarkLocalDataSource: BookmarkDataSource {
@@ -26,26 +30,90 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
         print("\(type(of: self)) \(#function)")
     }
     
-    func get() -> [BookmarkItemModel]? {
-        print("\(BookmarkLocalDataSource.self) \(#function)")
+    func getLists(ascending: Bool = false) -> [BookmarkListModel]? {
+        print("\(type(of: self)) \(#function)")
         
-        let fetchRequest = BookmarkItemModel.fetchRequest()
+        let fetchRequest = BookmarkListModel.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \BookmarkListModel.timestamp, ascending: ascending)
+        ]
         let objects = try? viewContext.fetch(fetchRequest)
         
         return objects
     }
     
-    func add(type: String, data: [String: Any]) -> BookmarkItemModel? {
+    func getList(listID: String) -> BookmarkListModel? {
+        let fetchRequest = BookmarkListModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id = %@", listID)
+        
+        let objects = try? viewContext.fetch(fetchRequest)
+        
+        return objects?[0]
+    }
+    
+    func addList(title: String) -> BookmarkListModel? {
+        let newList = BookmarkListModel(context: viewContext)
+        newList.id = UUID().uuidString
+        newList.timestamp = Date()
+        newList.title = title
+        
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            print("Unresolved error \(nsError), \(nsError.userInfo)")
+            return nil
+        }
+        return newList
+    }
+    
+    func deleteLists(ids: [String]) -> Bool {
+        guard let items = getLists()
+        else { return false }
+        
+        items.filter { item in
+            guard let id = item.id else { return false }
+            return ids.contains(id)
+        }.forEach(viewContext.delete)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            print("Unresolved error \(nsError), \(nsError.userInfo)")
+            return false
+        }
+        
+        return true
+    }
+    
+    func getItems(listID: String, ascending: Bool = false) -> [BookmarkItemModel]? {
+        let fetchRequest = BookmarkItemModel.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \BookmarkItemModel.timestamp, ascending: ascending)
+        ]
+        fetchRequest.predicate = NSPredicate(format: "list.id = %@", listID)
+        let objects = try? viewContext.fetch(fetchRequest)
+        
+        return objects
+    }
+    
+    func addItem(listID: String, type: String, data: [String: Any]) -> BookmarkItemModel? {
         let newItem = BookmarkItemModel(context: viewContext)
         newItem.timestamp = Date()
+        newItem.id = UUID().uuidString
         newItem.type = type
+        newItem.list = getList(listID: listID)
         
         switch type {
         case "regulation":
-            newItem.data = data["url"] as? String
+            newItem.title = data["title"] as? String
+            newItem.url = data["url"] as? String
             break
         case "definition":
-            newItem.data = data["document_id"] as? String
+            newItem.title = data["title"] as? String
+            newItem.document_id = data["document_id"] as? String
+            newItem.definition = data["definition"] as? String
             break
         default:
             return nil
@@ -61,11 +129,14 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
         return newItem
     }
     
-    func delete(offsets: IndexSet) -> Bool {
-        guard let items = get()
+    func deleteItems(listID: String, ids: [String]) -> Bool {
+        guard let items = getItems(listID: listID)
         else { return false }
         
-        offsets.map { items[$0] }.forEach(viewContext.delete)
+        items.filter { item in
+            guard let id = item.id else { return false }
+            return ids.contains(id)
+        }.forEach(viewContext.delete)
         
         do {
             try viewContext.save()
