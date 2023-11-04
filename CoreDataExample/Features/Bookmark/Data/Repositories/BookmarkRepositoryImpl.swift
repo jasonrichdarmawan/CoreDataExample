@@ -5,7 +5,7 @@
 //  Created by Jason Rich Darmawan Onggo Putra on 02/11/23.
 //
 
-import SwiftUI
+import Foundation
 
 final class BookmarkRepositoryImpl: BookmarkRepository {
     private let dataSource: BookmarkDataSource
