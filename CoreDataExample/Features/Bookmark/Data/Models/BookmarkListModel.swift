@@ -14,9 +14,6 @@ extension BookmarkListModel {
             timestamp: self.timestamp,
             data: [
                 "title": self.title as Any,
-//                "items": self.items?.map({ item in
-//                    return (item as? BookmarkItemModel)?.toDomain()
-//                }) as Any
             ]
         )
     }
