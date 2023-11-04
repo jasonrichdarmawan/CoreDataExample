@@ -67,7 +67,7 @@ final class BookmarkContainer {
         #if DEBUG
         print("\(type(of: self)) \(#function)")
         #endif
-        container = NSPersistentContainer(name: "CoreDataExample")
+        container = NSPersistentCloudKitContainer(name: "CoreDataExample")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
