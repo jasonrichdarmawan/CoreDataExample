@@ -52,5 +52,18 @@ final class BookmarkRepositoryImpl: BookmarkRepository {
 final class BookmarkRepositoryManager {
     private init() {}
     
-    static let shared = BookmarkRepositoryImpl(dataSource: BookmarkDataSourceManager.shared)
+    static weak var shared: BookmarkRepository! {
+        var temp: BookmarkRepository
+        
+        if _shared == nil {
+            temp = BookmarkRepositoryImpl(
+                dataSource: BookmarkDataSourceManager.shared
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    private static weak var _shared: BookmarkRepository?
 }

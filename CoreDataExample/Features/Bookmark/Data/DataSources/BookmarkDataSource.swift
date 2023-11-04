@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-protocol BookmarkDataSource {
+protocol BookmarkDataSource: AnyObject {
     func getLists(ascending: Bool) -> [BookmarkListModel]?
     func addList(title: String) -> BookmarkListModel?
     func deleteLists(ids: [String]) -> Bool
@@ -18,7 +18,7 @@ protocol BookmarkDataSource {
     func deleteItems(listID: String, ids: [String]) -> Bool
 }
 
-final class BookmarkLocalDataSource: BookmarkDataSource {
+final class BookmarkCloudKitDataSource: BookmarkDataSource {
     private var viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext) {
@@ -176,5 +176,18 @@ final class BookmarkLocalDataSource: BookmarkDataSource {
 final class BookmarkDataSourceManager {
     private init() {}
     
-    static let shared = BookmarkLocalDataSource(viewContext: BookmarkContainer.shared.container.viewContext)
+    static weak var shared: BookmarkDataSource! {
+        var temp: BookmarkDataSource
+        
+        if _shared == nil {
+            temp = BookmarkCloudKitDataSource(
+                viewContext: BookmarkContainer.shared.container.viewContext
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    private static weak var _shared: BookmarkDataSource?
 }

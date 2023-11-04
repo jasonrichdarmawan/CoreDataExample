@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GetBookmarkItems {
+protocol GetBookmarkItems: AnyObject {
     func call(listID: String, ascending: Bool) -> [BookmarkItem]
 }
 
@@ -33,7 +33,18 @@ final class GetBookmarkItemsImpl: GetBookmarkItems {
 }
 
 final class GetBookmarkItemsManager {
-    static let shared: GetBookmarkItems = GetBookmarkItemsImpl(
-        repository: BookmarkRepositoryManager.shared
-    )
+    static weak var shared: GetBookmarkItems! {
+        var temp: GetBookmarkItems
+        
+        if _shared == nil {
+            temp = GetBookmarkItemsImpl(
+                repository: BookmarkRepositoryManager.shared
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    private static weak var _shared: GetBookmarkItems?
 }

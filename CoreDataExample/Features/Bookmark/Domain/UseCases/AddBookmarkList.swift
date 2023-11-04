@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AddBookmarkList {
+protocol AddBookmarkList: AnyObject {
     func call(title: String) -> BookmarkList?
 }
 
@@ -35,7 +35,18 @@ final class AddBookmarkListImpl: AddBookmarkList {
 final class AddBookmarkListManager {
     private init() {}
     
-    static let shared: AddBookmarkList = AddBookmarkListImpl(
-        repository: BookmarkRepositoryManager.shared
-    )
+    static weak var shared: AddBookmarkList! {
+        var temp: AddBookmarkList
+        
+        if _shared == nil {
+            temp = AddBookmarkListImpl(
+                repository: BookmarkRepositoryManager.shared
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    static weak var _shared: AddBookmarkList?
 }

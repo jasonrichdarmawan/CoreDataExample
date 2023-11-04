@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol GetBookmarkLists {
+protocol GetBookmarkLists: AnyObject {
     func call(ascending: Bool) -> [BookmarkList]
 }
 
@@ -35,7 +35,18 @@ final class GetBookmarkListsImpl: GetBookmarkLists {
 final class GetBookmarkListManager {
     private init() {}
     
-    static let shared: GetBookmarkLists = GetBookmarkListsImpl(
-        repository: BookmarkRepositoryManager.shared
-    )
+    static weak var shared: GetBookmarkLists! {
+        var temp: GetBookmarkLists
+        
+        if _shared == nil {
+            temp = GetBookmarkListsImpl(
+                repository: BookmarkRepositoryManager.shared
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    static weak var _shared: GetBookmarkLists?
 }

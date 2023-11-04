@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DeleteBookmarkItemsByIDs {
+protocol DeleteBookmarkItemsByIDs: AnyObject {
     func call(listID: String, ids: [String])
 }
 
-final class DeleteBookmarkItemImpl: DeleteBookmarkItemsByIDs {
+final class DeleteBookmarkItemByIDsImpl: DeleteBookmarkItemsByIDs {
     private let repository: BookmarkRepository
     
     init(repository: BookmarkRepository) {
@@ -35,7 +35,18 @@ final class DeleteBookmarkItemImpl: DeleteBookmarkItemsByIDs {
 final class DeleteBookmarkItemsByIDsManager {
     private init() {}
     
-    static let shared: DeleteBookmarkItemsByIDs = DeleteBookmarkItemImpl(
-        repository: BookmarkRepositoryManager.shared
-    )
+    static weak var shared: DeleteBookmarkItemsByIDs! {
+        var temp: DeleteBookmarkItemsByIDs
+        
+        if _shared == nil {
+            temp = DeleteBookmarkItemByIDsImpl(
+                repository: BookmarkRepositoryManager.shared
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    private static weak var _shared: DeleteBookmarkItemsByIDs?
 }

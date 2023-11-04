@@ -47,16 +47,26 @@ final class BookmarkContainer {
 }
 
 extension BookmarkContainer {
-    static let shared: BookmarkContainer = {
+    static var shared: BookmarkContainer! {
+        #if DEBUG
         if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
             return preview
         }
+        #endif
         
-        let result = BookmarkContainer()
+        var temp: BookmarkContainer
         
-        return result
-    }()
+        if _shared == nil {
+            temp = BookmarkContainer()
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    static var _shared: BookmarkContainer?
 
+    #if DEBUG
     private static let preview: BookmarkContainer = {
         let result = BookmarkContainer(inMemory: true)
         let viewContext = result.container.viewContext
@@ -99,4 +109,5 @@ extension BookmarkContainer {
         }
         return result
     }()
+    #endif
 }

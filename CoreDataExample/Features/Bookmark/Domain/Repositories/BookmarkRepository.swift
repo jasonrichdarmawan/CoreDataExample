@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol BookmarkRepository {
+protocol BookmarkRepository: AnyObject {
     func getLists(ascending: Bool) -> [BookmarkList]
     func addList(title: String) -> BookmarkList?
     func deleteLists(ids: [String]) -> Bool

@@ -67,9 +67,20 @@ final class BookmarkViewModel: ObservableObject {
 final class BookmarkViewModelManager {
     private init() {}
     
-    static let shared = BookmarkViewModel(
-        getBookmarkList: GetBookmarkListManager.shared,
-        addBookmarkList: AddBookmarkListManager.shared,
-        deleteBookmarkLists: DeleteBookmarkListsManager.shared
-    )
+    static weak var shared: BookmarkViewModel! {
+        var temp: BookmarkViewModel
+        
+        if _shared == nil {
+            temp = BookmarkViewModel(
+                getBookmarkList: GetBookmarkListManager.shared,
+                addBookmarkList: AddBookmarkListManager.shared,
+                deleteBookmarkLists: DeleteBookmarkListsManager.shared
+            )
+            _shared = temp
+        }
+        
+        return _shared
+    }
+    
+    private static weak var _shared: BookmarkViewModel?
 }
